@@ -4,6 +4,35 @@
 
 console.log('Hello World!');
 
+var data_types = {
+    json: {
+        mime: 'application/json'
+    },
+    urlencoded: {
+        mime: 'application/x-www-form-urlencoded'
+    },
+    xml: {
+        mime: 'application/xml'
+    }
+};
+
+/**
+ * @function transformData
+ * @description Convert the data from one mime type to another
+ * @param verb {string} One of the common verbs --> GET, POST, PUT or DELETE
+ * @param url {string} Url string for the ajax call
+ * */
+function transformData(data, input_format, op_format) {
+
+}
+
+console.log(transformData({
+    name: 'Ronak Jethwa',
+    id: 5000
+}, 'json', 'urlencoded'));
+
+console.log(transformData('name=Charles%20Park&type%20of%20dev=ui', 'urlencoded', 'json'));
+
 /**
  * @function ajax
  * @description Make an ajax call
@@ -45,18 +74,4 @@ function ajax(verb, url, data, success, error) {
     }
 }
 
-ajax('GET', '/test', {
-    name: 'Charles Park',
-    id: 1000,
-    'type of dev': 'UI'
-}, function (response) {
-    console.log(response);
-});
 
-ajax('POST', '/test', {
-    name: 'Charles Park',
-    id: 1000,
-    'type of dev': 'UI'
-}, function (response) {
-    console.log(response);
-});
