@@ -7,8 +7,25 @@
     <script src="/js/upload.js"></script>
 </head>
 <body>
-    <h1>File Uploads</h1>
-    <input type="file" multiple/>
-    <button>Upload the File</button>
+    <section>
+        <header>
+            <h2>Upload Using AJAX</h2>
+        </header>
+        <h1>File Uploads</h1>
+        <input type="file" multiple/>
+        <button>Upload the File</button>
+    </section>
+
+    <section>
+        <header>
+            <h2>Upload Form</h2>
+        </header>
+        <form action="/files/upload" enctype="multipart/form-data" method="post">
+            <input type="file" multiple/>
+            <input type="submit" value="Upload Form"/>
+        </form>
+    </section>
+
+
 </body>
 </html>
