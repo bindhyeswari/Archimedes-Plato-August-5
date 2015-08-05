@@ -23,7 +23,30 @@ var data_types = {
  * @param url {string} Url string for the ajax call
  * */
 function transformData(data, input_format, op_format) {
+    // route the input data to the correct function
+    switch (input_format + '|' + op_format) {
+        case ('urlencoded|json'): return urlToJSON(data);
+    }
+    function jsonTourl() {
 
+    }
+    function urlToJSON(str) {
+        var regex = /&?([^=]+)=([^&]+)/gmi;
+        var obj = {};
+        var match;
+        do {
+            match = regex.exec(str);
+            if (match) {
+                var prop = decodeURIComponent(match[1]);
+                var value = decodeURIComponent(match[2]);
+                obj[prop] = value;
+            }
+            console.log(match);
+        } while (match);
+        console.log('done');
+        return obj;
+    }
+    return null;
 }
 
 console.log(transformData({
@@ -73,5 +96,17 @@ function ajax(verb, url, data, success, error) {
         xhr.send();
     }
 }
+
+function createXMLDocument() {
+    var doc = document.implementation.createDocument('', '', null);
+    var root = document.createElement('data');
+    var name = document.createElement('name');
+    name.setAttribute('type', 'full name');
+    name.appendChild(document.createTextNode('Lei Xu'));
+    root.appendChild(name);
+    console.log(root);
+}
+
+
 
 
