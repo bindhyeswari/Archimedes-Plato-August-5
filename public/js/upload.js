@@ -21,6 +21,15 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log(formdata);
 
         // make an ajax call and upload the data ...
-
+        if (files.length) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/files/upload');
+            xhr.addEventListener('readystatechange', function () {
+                if (xhr.status === 200 && xhr.readyState === 4) {
+                    console.log(xhr.responseText);
+                }
+            });
+            xhr.send(formdata);
+        }
     });
 });
