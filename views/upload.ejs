@@ -20,8 +20,8 @@
         <header>
             <h2>Upload Form</h2>
         </header>
-        <form action="/files/upload" enctype="multipart/form-data" method="post">
-            <input type="file" multiple/>
+        <form name="files" action="/files/upload" enctype="multipart/form-data" method="post">
+            <input name="info" type="file" multiple/>
             <input type="submit" value="Upload Form"/>
         </form>
     </section>

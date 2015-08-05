@@ -3,8 +3,9 @@ var router = express.Router();
 var path = require('path');
 var multer = require('multer');
 var upload = multer({
-    dest: path.join(__dirname, 'uploads')
+    dest: path.join(__dirname, '/../uploads')
 });
+
 
 
 /* GET home page. */
@@ -25,12 +26,14 @@ router.post('/test', function (req, res) {
     res.status(200).json({ message: 'IMPL_101' });
 });
 
-router.get('/upload', function (req, res) {
+router.get(['/upload', '/uploads'], function (req, res) {
     // check what is the content type and respond accordingly
     res.render('upload');
 });
 
-router.post('/files/upload', upload.array(), function (req, res) {
+var middleware = upload.array('info', 6);
+router.post('/files/upload', middleware, function (req, res) {
+    console.log(middleware);
     console.log(req.files);
     res.status(200).json({ message: 'IMPL_101' });
 });

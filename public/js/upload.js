@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var formdata = new FormData();
         var files = Array.prototype.slice.call(input_element.files);
         formdata = files.reduce(function (formdata, file) {
-            formdata.append(file.name, file);
+            formdata.append('info', file);
             return formdata;
         }, formdata);
         console.log(formdata);
