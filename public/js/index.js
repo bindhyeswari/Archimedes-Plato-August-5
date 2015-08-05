@@ -26,9 +26,15 @@ function transformData(data, input_format, op_format) {
     // route the input data to the correct function
     switch (input_format + '|' + op_format) {
         case ('urlencoded|json'): return urlToJSON(data);
+        case ('json|urlencoded'): return jsonTourl(data);
+        // todo: complete 4 other cases
     }
-    function jsonTourl() {
-
+    function jsonTourl(data) {
+        var arr = [];
+        for (var prop in data) {
+            arr.push(encodeURIComponent(prop) + '=' + encodeURIComponent(data[prop]));
+        }
+        return arr.join('&');
     }
     function urlToJSON(str) {
         var regex = /&?([^=]+)=([^&]+)/gmi;
@@ -41,9 +47,7 @@ function transformData(data, input_format, op_format) {
                 var value = decodeURIComponent(match[2]);
                 obj[prop] = value;
             }
-            console.log(match);
         } while (match);
-        console.log('done');
         return obj;
     }
     return null;

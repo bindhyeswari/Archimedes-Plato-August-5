@@ -11,4 +11,6 @@ jsdoc filename
 ```
 - This will generate the out folder which will, in turn contain the documentation
 - [Reference Docs](http://usejsdoc.org/)
+- For different file formats - refer to Scripted HTTP, Chapter 18 of Javascript the Definitive Guide
+- Course for test: 18.1 and 18.2
     

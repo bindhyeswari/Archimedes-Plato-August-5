@@ -19,4 +19,13 @@ router.post('/test', function (req, res) {
     res.status(200).json({ message: 'IMPL_101' });
 });
 
+router.get('/upload', function (req, res) {
+    // check what is the content type and respond accordingly
+    res.render('upload');
+});
+
+router.post('/files/upload', function (req, res) {
+    res.status(200).json({ message: 'IMPL_101' });
+});
+
 module.exports = router;
